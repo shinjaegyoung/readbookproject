@@ -9,12 +9,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.readbook.GroupRegActivity
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
 import com.example.readbook.model.User
@@ -55,6 +57,17 @@ class GroupListFragment : Fragment() {
         database = Firebase.database.reference
         val view = inflater.inflate(R.layout.fragment_group_list, container, false)
         val recyclerView = view.findViewById<RecyclerView>(R.id.groupList_recycler)
+
+        // 독서 모임 추가 버튼을 눌러 모임 생성 페이지로 이동
+        val regGroup = view?.findViewById<Button>(R.id.btnReg_grouplist)
+        regGroup?.setOnClickListener {
+            val groupIntent = Intent(context, GroupRegActivity::class.java)
+            context?.startActivity(groupIntent)
+        }
+
+        // 생성된 독서모임 방 정보를 DB에서 가져와 리스트로 작성
+
+
         //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = RecyclerViewAdapter()
@@ -66,6 +79,7 @@ class GroupListFragment : Fragment() {
 
         init {
             val myUid = Firebase.auth.currentUser?.uid.toString()
+            // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
             FirebaseDatabase.getInstance().reference.child("users").addValueEventListener(object :
                 ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
@@ -81,6 +95,7 @@ class GroupListFragment : Fragment() {
                     notifyDataSetChanged()
                 }
             })
+
         }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
             return CustomViewHolder(LayoutInflater.from(context).inflate(R.layout.item_goup_list, parent, false))
@@ -93,12 +108,14 @@ class GroupListFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+            // 작성된 리스트를 가져와 순서대로 출력(역순으로 고칠 것)
             Glide.with(holder.itemView.context).load(user[position].profileImageUrl)
                 .apply(RequestOptions().circleCrop())
                 .into(holder.imageView)
             holder.textView.text = user[position].name
             holder.textViewEmail.text = user[position].email
 
+            // 아이템을 클릭하면 해당 채팅방으로 이동
             holder.itemView.setOnClickListener{
                 val intent = Intent(context, MessageActivity::class.java)
                 intent.putExtra("destinationUid", user[position].uid)

@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        // Check that you have the following line (if not, add it):
+        google()  // Google's Maven repository
+        mavenCentral()
+        jcenter()
+        maven {url "https://jitpack.io"}
+
+    }
+}
+
+
+rootProject.name = "Readbook"
+include ':app'

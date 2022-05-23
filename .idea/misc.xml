@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/drawable/round_border_box.xml" value="0.1" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/drawable/round_box_border.xml" value="0.1" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/drawable/round_box_border2.xml" value="0.1" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_main.xml" value="0.22708333333333333" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_message.xml" value="0.365625" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_product_detail.xml" value="0.1" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_product_reg.xml" value="0.25" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_product_update.xml" value="0.11296296296296296" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_readlist.xml" value="0.303125" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/activity_registration.xml" value="0.1537037037037037" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/fragment_chat.xml" value="0.3515625" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/fragment_market.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/item_chat.xml" value="0.29635416666666664" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/item_market.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/item_market_detail.xml" value="0.1" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/item_market_reg.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/layout/item_message.xml" value="0.36" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/menu/bottom_menu.xml" value="0.15185185185185185" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/menu/market_menu.xml" value="0.22708333333333333" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/menu/product_detail_mevu.xml" value="0.1875" />
+        <entry key="..\:/LYK/work/android/android-study/readbook/app/src/main/res/menu/product_reg_menu.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/activity_product_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/activity_product_reg.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/activity_product_update.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/fragment_chat.xml" value="0.3619791666666667" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/fragment_home.xml" value="0.3619791666666667" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/fragment_market.xml" value="0.3619791666666667" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_chat.xml" value="0.1925925925925926" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_home.xml" value="0.3619791666666667" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_market.xml" value="0.33" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_market_detail.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_market_reg.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/layout/item_message.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/menu/bottom_menu.xml" value="0.34074074074074073" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/menu/market_menu.xml" value="0.22" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/menu/product_detail_menu.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/menu/product_reg_menu.xml" value="0.36614583333333334" />
+        <entry key="..\:/LYK/work/android/readbook/app/src/main/res/xml/xml.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/drawable_left_image_customise.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.152" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.152" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.152" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/key.xml" value="0.1625" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/drawable/left_image_key.xml" value="0.1625" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/activity_main.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/activity_message.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/activity_registration.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/activity_splash.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/drawable_left_image_customise.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/fragment_chat.xml" value="0.3484375" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/fragment_home.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/fragment_profile.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/fragment_test.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/item_chat.xml" value="0.3484375" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/item_home.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/item_message.xml" value="0.30462962962962964" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/layout/item_profile.xml" value="0.3484375" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/Readbook/app/src/main/res/menu/bottom_menu.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.163" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/drawable/main_progressbar.xml" value="0.171875" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_booksave.xml" value="0.178125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_calendar_detail.xml" value="0.2712962962962963" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_calendar_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_circle_main.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_circular.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_list_detail.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_main.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_pie_main02.xml" value="0.171875" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_piechart.xml" value="0.171875" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_product_reg.xml" value="0.22760416666666666" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_product_update.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_readlist.xml" value="0.22" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/activity_save_delete.xml" value="0.178125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/book_item.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/fragment_chat.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/fragment_group_list.xml" value="0.3323076923076923" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/fragment_home.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/fragment_market.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/item_day.xml" value="0.171875" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/item_home.xml" value="0.353125" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/item_market_reg.xml" value="0.18333333333333332" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/layout/savedelete.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/menu/bottom_menu.xml" value="0.2640625" />
+<<<<<<< HEAD
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/menu/market_menu.xml" value="0.171875" />
+        <entry key="..\:/Users/82107/AndroidStudioProjects/readbook/app/src/main/res/menu/product_detail_menu.xml" value="0.171875" />
+=======
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/drawable/round_box_border.xml" value="0.113" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/drawable/round_box_border2.xml" value="0.113" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/drawable/rounded_edittext.xml" value="0.1485" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_calendar_detail.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_calendar_main.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_login.xml" value="0.39166666666666666" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_main.xml" value="0.2636103151862464" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_registration.xml" value="0.39166666666666666" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/activity_splash.xml" value="0.3713646532438479" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/book_item.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/fragment_chat.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/fragment_home.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/fragment_market.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/fragment_profile.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/layout/item_home.xml" value="0.39166666666666666" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/menu/bottom_menu.xml" value="0.39166666666666666" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/menu/market_menu.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/menu/product_detail_menu.xml" value="0.32314814814814813" />
+        <entry key="..\:/Users/RORO/Desktop/androidProject/readbook/app/src/main/res/menu/product_reg_menu.xml" value="0.32314814814814813" />
+>>>>>>> origin/design3
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

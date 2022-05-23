@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ProductRegActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <ImageView
+            android:id="@+id/btnRegPImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/round_box_border"
+            android:clickable="true"
+            android:padding="20dp"
+            android:src="@drawable/ic_camera" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerViewPR">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edPName"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/round_box_border2"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="5dp"
+        android:hint="상품명"
+        android:textColor="#50000000" />
+
+    <EditText
+        android:id="@+id/edPrice"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/round_box_border2"
+        android:ems="10"
+        android:padding="5dp"
+        android:hint="가격"
+        android:textColor="#50000000"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edDes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/round_box_border2"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:hint="책의 보관 상태를 작성해주세요"
+        android:textColor="#50000000" />
+</LinearLayout>

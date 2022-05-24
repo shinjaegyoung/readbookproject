@@ -19,12 +19,15 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.readbook.GroupRegActivity
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
+import com.example.readbook.databinding.FragmentGroupListBinding
+import com.example.readbook.model.GroupChatModel
 import com.example.readbook.model.User
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import java.util.ArrayList
 
 class GroupListFragment : Fragment() {
     companion object{
@@ -33,8 +36,10 @@ class GroupListFragment : Fragment() {
         }
     }
 
+    private lateinit var binding : FragmentGroupListBinding
     private lateinit var database: DatabaseReference
-    private var user : ArrayList<User> = arrayListOf()
+    private var groupChatList = ArrayList<GroupChatModel>()
+    private var uid : String? = null
 
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +52,30 @@ class GroupListFragment : Fragment() {
         super.onAttach(context)
     }
 
+    init {
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)
+
+        // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
+        FirebaseDatabase.getInstance().reference.child("groupChatrooms").addValueEventListener(object :
+            ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.d("init 부분","success....?")
+                groupChatList.clear()
+                for(data in snapshot.children){
+                    val item = data.getValue<GroupChatModel>()
+                    Log.d("init 부분","${data.value}")
+                    groupChatList.add(item!!)
+                }
+                Log.d("init 부분","$groupChatList")
+                //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
+                recyclerView?.layoutManager = LinearLayoutManager(requireContext())
+                recyclerView?.adapter = RecyclerViewAdapter()
+            }
+        })
+    }
+
     //뷰가 생성되었을 때
     //프레그먼트와 레이아웃을 연결시켜주는 부분
     @SuppressLint("UseRequireInsteadOfGet")
@@ -56,7 +85,6 @@ class GroupListFragment : Fragment() {
 
         database = Firebase.database.reference
         val view = inflater.inflate(R.layout.fragment_group_list, container, false)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.groupList_recycler)
 
         // 독서 모임 추가 버튼을 눌러 모임 생성 페이지로 이동
         val regGroup = view?.findViewById<Button>(R.id.btnReg_grouplist)
@@ -65,38 +93,11 @@ class GroupListFragment : Fragment() {
             context?.startActivity(groupIntent)
         }
 
-        // 생성된 독서모임 방 정보를 DB에서 가져와 리스트로 작성
-
-
-        //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = RecyclerViewAdapter()
-
         return view
     }
 
     inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.CustomViewHolder>() {
 
-        init {
-            val myUid = Firebase.auth.currentUser?.uid.toString()
-            // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
-            FirebaseDatabase.getInstance().reference.child("users").addValueEventListener(object :
-                ValueEventListener {
-                override fun onCancelled(error: DatabaseError) {
-                }
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    user.clear()
-                    for(data in snapshot.children){
-                        val item = data.getValue<User>()
-                        if(item?.uid.equals(myUid)) { continue } // 본인은 친구창에서 제외
-                        user.add(item!!)
-                    }
-                    Log.d("name","${user}")
-                    notifyDataSetChanged()
-                }
-            })
-
-        }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
             return CustomViewHolder(LayoutInflater.from(context).inflate(R.layout.item_goup_list, parent, false))
         }
@@ -109,22 +110,31 @@ class GroupListFragment : Fragment() {
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
             // 작성된 리스트를 가져와 순서대로 출력(역순으로 고칠 것)
-            Glide.with(holder.itemView.context).load(user[position].profileImageUrl)
+            Log.d("adapter 내부","$groupChatList")
+            Glide.with(holder.itemView.context).load(R.drawable.logo2)
                 .apply(RequestOptions().circleCrop())
+                .override(100,100)
                 .into(holder.imageView)
-            holder.textView.text = user[position].name
-            holder.textViewEmail.text = user[position].email
+            holder.textView.text = groupChatList[position].groupName
+            holder.textViewEmail.text = groupChatList[position].groupDes
 
-            // 아이템을 클릭하면 해당 채팅방으로 이동
+            // 아이템을 클릭하면 해당 채팅방으로 이동(uid 비교하여 users에 추가)
             holder.itemView.setOnClickListener{
+                uid = Firebase.auth.currentUser?.uid.toString()
+                var gid = groupChatList[position].groupId
+
                 val intent = Intent(context, MessageActivity::class.java)
-                intent.putExtra("destinationUid", user[position].uid)
+                if(!groupChatList[position].users.contains(uid) && groupChatList[position].userLimit != groupChatList[position].users.size){
+                    groupChatList[position].users.put(uid!!,true)
+                    FirebaseDatabase.getInstance().getReference("groupChatrooms").child("$gid/users").setValue(groupChatList[position].users)
+                }
                 context?.startActivity(intent)
             }
         }
 
         override fun getItemCount(): Int {
-            return user.size
+            Log.d("getItemCount","${groupChatList.size}")
+            return groupChatList.size
         }
     }
 }

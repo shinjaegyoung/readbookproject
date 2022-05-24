@@ -10,63 +10,65 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"></androidx.appcompat.widget.Toolbar>
+        android:layout_height="60dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="모임 만들기"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:fontFamily="@font/fontstyle"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/btnRegPImg"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/round_box_border"
-            android:clickable="true"
-            android:padding="20dp"
-            android:src="@drawable/ic_camera" />
+        <EditText
+            android:id="@+id/edGName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_box_border2"
+            android:ems="10"
+            android:hint="모임명을 입력해주세요"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#50000000" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="참가 인원" />
+
+        <NumberPicker
+            android:id="@+id/numberPicker"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_height="60dp"/>
+
+        <EditText
+            android:id="@+id/edGDes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/round_box_border2"
+            android:ems="10"
+            android:hint="모임에 대해 간략하게 설명해주세요"
+            android:gravity="start"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textColor="#50000000" />
+
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/edGName"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/round_box_border2"
-        android:ems="10"
-        android:hint="모임명을 입력해주세요"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:textColor="#50000000" />
-
-    <EditText
-        android:id="@+id/edGDes"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/round_box_border2"
-        android:ems="10"
-        android:hint="모임에 대해 간략하게 설명해주세요"
-        android:inputType="textPersonName"
-        android:padding="5dp"
-        android:textColor="#50000000" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

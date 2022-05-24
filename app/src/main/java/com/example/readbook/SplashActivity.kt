@@ -73,10 +73,20 @@ class SplashActivity : AppCompatActivity() {
         facebook_login.setOnClickListener {
             facebookLogin()
         }
+
+
+    }private fun moveMainPage(currentUser: FirebaseUser?) {
+        if(auth.currentUser!=null){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     public override fun onStart(){
         super.onStart()
+        moveMainPage(auth?.currentUser)
+
         val currentUser = auth.currentUser
 
         if(currentUser != null){

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.readbook.GroupMessageActivity
 import com.example.readbook.model.ChatModel
 import com.example.readbook.model.User
 import com.example.readbook.MessageActivity
@@ -143,7 +144,7 @@ class ChatFragment : Fragment() {
                         holder.textView_title.text = friend?.name
                     }
                 })
-            //메세지 내림차순 정렬 후 마지막 메세지의 키값을 가져옴
+            //메세지 내림차순 정렬 후 마지막 메세지의 키값을 가져옴(삭제)
             val commentMap = TreeMap<String, ChatModel.Comment>(reverseOrder())
             commentMap.putAll(chatModel[position].comments)
             val lastMessageKey = commentMap.keys.toTypedArray()[0]

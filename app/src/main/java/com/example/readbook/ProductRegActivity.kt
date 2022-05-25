@@ -94,6 +94,7 @@ class ProductRegActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
         // 업로드 이미지 Uri를 담는 ArrayList 생성
         productImgs = ArrayList<ProductImg>()
 

@@ -20,6 +20,7 @@ import com.example.readbook.GroupRegActivity
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
 import com.example.readbook.databinding.FragmentGroupListBinding
+import com.example.readbook.databinding.FragmentMarketBinding
 import com.example.readbook.model.CalendarData
 import com.example.readbook.model.GroupChatModel
 import com.example.readbook.model.User
@@ -32,13 +33,15 @@ import java.util.ArrayList
 
 class GroupListFragment : Fragment() {
     private var groupChatList : ArrayList<GroupChatModel> = ArrayList<GroupChatModel>()
+    private var recyclerView: RecyclerView? = null
+    lateinit var binding : FragmentGroupListBinding
     companion object{
         fun newInstance() : GroupListFragment {
             return GroupListFragment()
         }
     }
 
-    private lateinit var binding : FragmentGroupListBinding
+
     private lateinit var database: DatabaseReference
 
 
@@ -49,7 +52,14 @@ class GroupListFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
-
+    override fun onStart() {
+        super.onStart()
+        recyclerView = binding.groupListRecycler
+        val manager = LinearLayoutManager(this.context)
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        recyclerView?.layoutManager=manager
+    }
     //프레그먼트를 포함하고 있는 액티비티에 붙었을 때
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -90,6 +100,7 @@ class GroupListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         database = Firebase.database.reference
+        binding= FragmentGroupListBinding.inflate(layoutInflater, container, false)
         val view = inflater.inflate(R.layout.fragment_group_list, container, false)
 
         // 독서 모임 추가 버튼을 눌러 모임 생성 페이지로 이동

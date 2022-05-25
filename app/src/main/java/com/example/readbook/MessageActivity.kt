@@ -98,6 +98,8 @@ class MessageActivity : AppCompatActivity() {
         checkChatRoom()
     }
 
+
+
     private fun checkChatRoom(){
         fireDatabase.child("chatrooms").orderByChild("users/$uid").equalTo(true)
             .addListenerForSingleValueEvent(object : ValueEventListener{

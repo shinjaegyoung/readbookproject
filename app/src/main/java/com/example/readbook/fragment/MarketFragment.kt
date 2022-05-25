@@ -33,6 +33,7 @@ import kotlin.collections.ArrayList
 private val fireDatabase = FirebaseDatabase.getInstance().reference
 
 class MarketFragment : Fragment() {
+    private var recyclerView: RecyclerView? = null
     lateinit var binding: FragmentMarketBinding
     companion object {
         fun newInstance(): MarketFragment {
@@ -42,8 +43,17 @@ class MarketFragment : Fragment() {
     // 메모리에 올라감
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
+    override fun onStart() {
+        super.onStart()
+        recyclerView = binding.marketfragmentRecyclerview
+        val manager = LinearLayoutManager(this.context)
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        recyclerView?.layoutManager=manager
+    }
     //프레그먼트를 포함하고 있는 액티비티에 붙었을 때
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -65,6 +75,8 @@ class MarketFragment : Fragment() {
             val intent=Intent(context, ProductRegActivity::class.java)
             context?.startActivity(intent)
         }
+
+
         return binding.root
     }
 
@@ -73,6 +85,7 @@ class MarketFragment : Fragment() {
         private val productlist = ArrayList<Product>()
 
         init {
+
             fireDatabase.child("productlist")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
@@ -103,6 +116,8 @@ class MarketFragment : Fragment() {
             val imageView: ImageView = itemView.findViewById(R.id.productImg)
             val textView_title: TextView = itemView.findViewById(R.id.tvProductName)
             val textView_price: TextView = itemView.findViewById(R.id.tvPrice)
+
+
         }
 
         override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
@@ -131,6 +146,7 @@ class MarketFragment : Fragment() {
                 })
 
             //상품 선택 시 이동(페이지 구현 예정)
+
             holder.itemView.setOnClickListener {
                 val intent = Intent(activity, ProductDetailActivity::class.java)
                 intent.putExtra("pDes", productlist[position].pDes)

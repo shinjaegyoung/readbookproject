@@ -20,6 +20,8 @@ import com.example.readbook.model.ChatModel
 import com.example.readbook.model.User
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
+import com.example.readbook.databinding.FragmentChatBinding
+import com.example.readbook.databinding.FragmentMarketBinding
 
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -33,21 +35,33 @@ import java.util.Collections.reverseOrder
 import kotlin.collections.ArrayList
 
 class ChatFragment : Fragment() {
+    lateinit var binding: FragmentChatBinding
     companion object {
         fun newInstance(): ChatFragment {
             return ChatFragment()
         }
     }
-
+    private var recyclerView: RecyclerView? = null
     private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
+    /*override fun onStart() {
+        super.onStart()
+
+        recyclerView = binding.chatfragmentRecyclerview
+        val manager = LinearLayoutManager(this.context)
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        recyclerView?.layoutManager=manager
+    }*/
     //프레그먼트를 포함하고 있는 액티비티에 붙었을 때
     override fun onAttach(context: Context) {
+
         super.onAttach(context)
     }
 
@@ -91,6 +105,7 @@ class ChatFragment : Fragment() {
                     }
                 })
         }
+
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
 

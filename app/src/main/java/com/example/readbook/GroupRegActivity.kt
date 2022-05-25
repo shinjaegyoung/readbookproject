@@ -36,21 +36,21 @@ class GroupRegActivity : AppCompatActivity() {
 
         R.id.toolbar_reg_button -> {
             uid = Firebase.auth.currentUser?.uid.toString()
-<<<<<<< HEAD
-            val gId = FirebaseDatabase.getInstance().getReference("groupChatrooms").push().key
-=======
+
+
+
             var gId = FirebaseDatabase.getInstance().getReference("groupChatrooms").push().key
->>>>>>> f83bb6f608c05d8266d74937d8aa5f10ba66929b
+
 
             groupChatModel.users.toString()
             groupChatModel.groupName=binding.edGName.text.toString()
             groupChatModel.groupDes=binding.edGDes.text.toString()
             groupChatModel.userLimit=binding.numberPicker.value
             groupChatModel.groupId=gId.toString()
-<<<<<<< HEAD
-=======
+
+
             comment=GroupChatModel.Comment(uid, "독서모임에 오신 것을 환영합니다!",curTime)
->>>>>>> f83bb6f608c05d8266d74937d8aa5f10ba66929b
+
 
             if (binding.edGName.text.isEmpty() || binding.edGDes.text.isEmpty()) {
                 Toast.makeText(this, "모든 항목을 작성해주세요.", Toast.LENGTH_SHORT)
@@ -59,10 +59,9 @@ class GroupRegActivity : AppCompatActivity() {
                 Log.d("shin", "${FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).setValue(groupChatModel)}")
             } else {
                 FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).setValue(groupChatModel)
-<<<<<<< HEAD
-=======
+
                 FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).child("comments").push().setValue(comment)
->>>>>>> f83bb6f608c05d8266d74937d8aa5f10ba66929b
+
                 Toast.makeText(this, "모임이 등록되었습니다.", Toast.LENGTH_SHORT)
                     .show()
                 Log.d("shinshin", "${gId}")

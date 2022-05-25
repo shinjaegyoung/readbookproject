@@ -79,18 +79,13 @@ class GroupListFragment : Fragment() {
                 Log.d("init 부분","success....?")
                 groupChatList.clear()
                 for(data in snapshot.children){
-                    groupChatList.add(data.getValue<GroupChatModel>()!!)
+                    val item = data.getValue<GroupChatModel>()
                     Log.d("init 부분","${data.value}")
-<<<<<<< HEAD
-                       Log.d("init jae 부분","${groupChatList}")
-
-
-=======
                     Log.d("init 부분","${item}")
 
                     groupChatList.add(item!!)
->>>>>>> f83bb6f608c05d8266d74937d8aa5f10ba66929b
-                }
+                    }
+
                 Log.d("init 부분","${groupChatList}")
                 //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
                 val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)

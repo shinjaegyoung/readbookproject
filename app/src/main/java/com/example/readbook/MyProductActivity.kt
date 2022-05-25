@@ -38,6 +38,10 @@ class MyProductActivity : AppCompatActivity() {
         binding= ActivityMyProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setSupportActionBar(findViewById(R.id.topBar))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         supportFragmentManager.beginTransaction().add(R.id.tabContent, MyProductItemFragment()).commit()
 
         binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{

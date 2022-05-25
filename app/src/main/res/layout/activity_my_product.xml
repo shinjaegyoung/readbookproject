@@ -9,7 +9,8 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:background="#66FAF0D7">
 
         <TextView
             android:id="@+id/textView2"
@@ -27,8 +28,7 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabGravity="center"
-        app:tabMode="scrollable"
+        app:tabBackground="@color/lasbeOrange"
         android:layout_below="@id/topBar">
 
         <com.google.android.material.tabs.TabItem
@@ -44,5 +44,6 @@
     <FrameLayout
         android:id="@+id/tabContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabs"/>
 </RelativeLayout>

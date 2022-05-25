@@ -67,6 +67,8 @@ class ReadListActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+
+
         auth = Firebase.auth
         val spEmail = Firebase.auth.currentUser?.email.toString()
         val plusEmail = spEmail.replace(".", "+")
@@ -93,6 +95,10 @@ class ReadListActivity : AppCompatActivity() {
         if (currentUser != null) {
             reload()
         }
+        val manager = LinearLayoutManager(this)
+        manager.reverseLayout = true
+        manager.stackFromEnd = true
+        recyclerView?.layoutManager=manager
     }
     private fun reload() {
     }

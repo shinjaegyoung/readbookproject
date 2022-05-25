@@ -37,6 +37,7 @@ class ListDetailActivity : AppCompatActivity() {
     val userId = user?.uid
     val fireDatabase = FirebaseDatabase.getInstance()
     val new2Ref = fireDatabase.getReference("bookdiray").child(useremail_plus).push()
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.product_detail_menu, menu)
 

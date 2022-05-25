@@ -20,6 +20,7 @@ import com.example.readbook.GroupRegActivity
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
 import com.example.readbook.databinding.FragmentGroupListBinding
+import com.example.readbook.model.CalendarData
 import com.example.readbook.model.GroupChatModel
 import com.example.readbook.model.User
 import com.google.firebase.auth.ktx.auth
@@ -30,6 +31,7 @@ import com.google.firebase.ktx.Firebase
 import java.util.ArrayList
 
 class GroupListFragment : Fragment() {
+    private var groupChatList : ArrayList<GroupChatModel> = ArrayList<GroupChatModel>()
     companion object{
         fun newInstance() : GroupListFragment {
             return GroupListFragment()
@@ -38,7 +40,8 @@ class GroupListFragment : Fragment() {
 
     private lateinit var binding : FragmentGroupListBinding
     private lateinit var database: DatabaseReference
-    private var groupChatList = ArrayList<GroupChatModel>()
+
+
     private var uid : String? = null
 
     //메모리에 올라갔을 때
@@ -53,7 +56,7 @@ class GroupListFragment : Fragment() {
     }
 
     init {
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)
+
 
         // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
         FirebaseDatabase.getInstance().reference.child("groupChatrooms").addValueEventListener(object :
@@ -64,12 +67,15 @@ class GroupListFragment : Fragment() {
                 Log.d("init 부분","success....?")
                 groupChatList.clear()
                 for(data in snapshot.children){
-                    val item = data.getValue<GroupChatModel>()
+                    groupChatList.add(data.getValue<GroupChatModel>()!!)
                     Log.d("init 부분","${data.value}")
-                    groupChatList.add(item!!)
+                       Log.d("init jae 부분","${groupChatList}")
+
+
                 }
                 Log.d("init 부분","$groupChatList")
                 //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
+                val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)
                 recyclerView?.layoutManager = LinearLayoutManager(requireContext())
                 recyclerView?.adapter = RecyclerViewAdapter()
             }
@@ -133,8 +139,9 @@ class GroupListFragment : Fragment() {
         }
 
         override fun getItemCount(): Int {
-            Log.d("getItemCount","${groupChatList.size}")
             return groupChatList.size
+            notifyDataSetChanged()
+            Log.d("getItemCount","${groupChatList.size}")
         }
     }
 }

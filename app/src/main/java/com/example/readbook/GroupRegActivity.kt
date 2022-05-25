@@ -46,6 +46,7 @@ class GroupRegActivity : AppCompatActivity() {
             groupChatModel.groupName=binding.edGName.text.toString()
             groupChatModel.groupDes=binding.edGDes.text.toString()
             groupChatModel.userLimit=binding.numberPicker.value
+            groupChatModel.chief= uid.toString()
             groupChatModel.groupId=gId.toString()
 
 

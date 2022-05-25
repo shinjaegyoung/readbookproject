@@ -34,7 +34,8 @@ class GroupMessageActivity : AppCompatActivity() {
     private var gid : String? = null
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.chat_menu, menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
@@ -42,6 +43,20 @@ class GroupMessageActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+            true
+        }
+        R.id.toolbar_exit_button -> {
+            var chief = intent.getStringExtra("chief")
+            uid = Firebase.auth.currentUser?.uid.toString()
+            gid = intent.getStringExtra("gId")
+
+            if(uid == chief){
+                fireDatabase.child("groupChatrooms").child(gid!!).removeValue()
+            }else{
+                fireDatabase.child("groupChatrooms").child(gid!!).child("users/$uid").removeValue()
+            }
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
             true
         }
         else -> super.onOptionsItemSelected(item)
@@ -88,27 +103,16 @@ class GroupMessageActivity : AppCompatActivity() {
         private var user : User? = null
         init{
             gid = intent.getStringExtra("gId").toString()
-            fireDatabase.child("groupChatrooms").child(gid!!).child("users").addListenerForSingleValueEvent(object :
+            fireDatabase.child("groupChatrooms").child(gid!!).addListenerForSingleValueEvent(object :
                 ValueEventListener {
                 override fun onCancelled(error: DatabaseError) {
                 }
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for(data in snapshot.children){
-                        // 채팅방에 있는 사용자 uid를 key값으로 하는 user 정보 가져오기
-                        fireDatabase.child("users").child(data.getValue().toString()).addListenerForSingleValueEvent(
-                            object : ValueEventListener {
-                                override fun onDataChange(snapshot: DataSnapshot) {
-                                    user = snapshot.getValue<User>()
-                                    chatName.text = user?.name
-                                    Log.d("chatName", "$chatName")
-                                    getMessageList()
-                                }
-
-                                override fun onCancelled(error: DatabaseError) {
-
-                                }
-                            })
-                    }
+                    chatName.text=snapshot.getValue<GroupChatModel>()?.groupName.toString()
+                    var maxNum=snapshot.getValue<GroupChatModel>()?.userLimit.toString()
+                    var curNum=snapshot.getValue<GroupChatModel>()?.users?.size.toString()
+                    chatLimit.text="(${maxNum}/${curNum})"
+                    getMessageList()
                 }
             })
         }
@@ -148,15 +152,24 @@ class GroupMessageActivity : AppCompatActivity() {
                 holder.layout_destination.visibility = View.INVISIBLE
                 holder.layout_main.gravity = Gravity.RIGHT
             }else{ // 상대방 채팅
-                Glide.with(holder.itemView.context)
-                    .load(user?.profileImageUrl)
-                    .apply(RequestOptions().circleCrop())
-                    .into(holder.imageView_profile)
-                holder.textView_name.text = user?.name
-                holder.layout_destination.visibility = View.VISIBLE
-                holder.textView_name.visibility = View.VISIBLE
-                holder.textView_message.setBackgroundResource(R.drawable.leftbubble)
-                holder.layout_main.gravity = Gravity.LEFT
+                fireDatabase.child("users").child("${comments[position].uid}").addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        user = snapshot.getValue<User>()
+                        Glide.with(holder.itemView.context)
+                            .load(user?.profileImageUrl)
+                            .apply(RequestOptions().circleCrop())
+                            .into(holder.imageView_profile)
+                        holder.textView_name.text = user?.name
+                        holder.layout_destination.visibility = View.VISIBLE
+                        holder.textView_name.visibility = View.VISIBLE
+                        holder.textView_message.setBackgroundResource(R.drawable.leftbubble)
+                        holder.layout_main.gravity = Gravity.LEFT
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+                })
             }
         }
 

@@ -142,16 +142,23 @@ class GroupListFragment : Fragment() {
             holder.itemView.setOnClickListener{
                 uid = Firebase.auth.currentUser?.uid.toString()
                 var gid = groupChatList[position].groupId
+                var chief = groupChatList[position].chief
+                Log.d("인원수","${groupChatList[position].userLimit} / ${groupChatList[position].users.size}")
 
                 val intent = Intent(context, GroupMessageActivity::class.java)
-                if(!groupChatList[position].users.contains(uid) && groupChatList[position].userLimit > groupChatList[position].users.size){
+                if(groupChatList[position].users.contains(uid)){
+                    intent.putExtra("gId",gid)
+                    context?.startActivity(intent)
+                }else if(!groupChatList[position].users.contains(uid) && groupChatList[position].userLimit > groupChatList[position].users.size){
                     groupChatList[position].users.put(uid!!,true)
                     FirebaseDatabase.getInstance().getReference("groupChatrooms").child("$gid/users").setValue(groupChatList[position].users)
-                }else{
+                    intent.putExtra("gId",gid)
+                    intent.putExtra("chief",chief)
+                    context?.startActivity(intent)
+                }else if(groupChatList[position].userLimit <= groupChatList[position].users.size){
                     Toast.makeText(context,"모임의 인원이 가득찼습니다.",Toast.LENGTH_SHORT).show()
                 }
-                intent.putExtra("gId",gid)
-                context?.startActivity(intent)
+
             }
         }
 

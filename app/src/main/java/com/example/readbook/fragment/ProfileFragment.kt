@@ -131,6 +131,11 @@ class ProfileFragment : Fragment() {
             }
         })
 
+        view.my_productBtn.setOnClickListener {
+            val intent = Intent(context, MyProductActivity::class.java)
+            context?.startActivity(intent)
+        }
+
         view.signoutBtn.setOnClickListener {
             //firebase auth에서 sign out 기능 호출
             Log.d("test1" , "${auth.currentUser.toString()}")

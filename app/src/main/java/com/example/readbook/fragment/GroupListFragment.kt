@@ -12,10 +12,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.readbook.GroupMessageActivity
 import com.example.readbook.GroupRegActivity
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
@@ -53,7 +55,7 @@ class GroupListFragment : Fragment() {
     }
 
     init {
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)
+
 
         // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
         FirebaseDatabase.getInstance().reference.child("groupChatrooms").addValueEventListener(object :
@@ -66,10 +68,13 @@ class GroupListFragment : Fragment() {
                 for(data in snapshot.children){
                     val item = data.getValue<GroupChatModel>()
                     Log.d("init 부분","${data.value}")
+                    Log.d("init 부분","${item}")
+
                     groupChatList.add(item!!)
                 }
-                Log.d("init 부분","$groupChatList")
+                Log.d("init 부분","${groupChatList}")
                 //this는 액티비티에서 사용가능, 프래그먼트는 requireContext()로 context 가져오기
+                val recyclerView = view?.findViewById<RecyclerView>(R.id.groupList_recycler)
                 recyclerView?.layoutManager = LinearLayoutManager(requireContext())
                 recyclerView?.adapter = RecyclerViewAdapter()
             }
@@ -123,11 +128,14 @@ class GroupListFragment : Fragment() {
                 uid = Firebase.auth.currentUser?.uid.toString()
                 var gid = groupChatList[position].groupId
 
-                val intent = Intent(context, MessageActivity::class.java)
-                if(!groupChatList[position].users.contains(uid) && groupChatList[position].userLimit != groupChatList[position].users.size){
+                val intent = Intent(context, GroupMessageActivity::class.java)
+                if(!groupChatList[position].users.contains(uid) && groupChatList[position].userLimit > groupChatList[position].users.size){
                     groupChatList[position].users.put(uid!!,true)
                     FirebaseDatabase.getInstance().getReference("groupChatrooms").child("$gid/users").setValue(groupChatList[position].users)
+                }else{
+                    Toast.makeText(context,"모임의 인원이 가득찼습니다.",Toast.LENGTH_SHORT).show()
                 }
+                intent.putExtra("gId",gid)
                 context?.startActivity(intent)
             }
         }

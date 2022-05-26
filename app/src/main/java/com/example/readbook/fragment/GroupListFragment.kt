@@ -68,9 +68,7 @@ class GroupListFragment : Fragment() {
     }
 
     init {
-
-
-        // 자신을 제외하고 users에 저장된 회원들을 가져와 친구 목록으로 작성(삭제할 내용)
+        // groupChatList에 추가
         FirebaseDatabase.getInstance().reference.child("groupChatrooms").addValueEventListener(object :
             ValueEventListener {
             override fun onCancelled(error: DatabaseError) {

@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Readbook">
-
+        <activity
+            android:name=".MyProductActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -40,12 +42,13 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
         <activity
             android:name=".GroupMessageActivity"
             android:exported="false" />
         <activity
             android:name=".ProductRegActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".calendar.CalendarDetailActivity"
             android:exported="false" />

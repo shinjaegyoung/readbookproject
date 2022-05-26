@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#66FAF0D7"
+    android:background="@color/color_dark2_FAF0D7_857D78"
 
     android:orientation="vertical"
     tools:context=".CircleMainActivity">

@@ -1,5 +1,6 @@
 package com.example.readbook.fragment
 
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -16,10 +17,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.readbook.*
 import com.example.readbook.calendar.CalendarMainActivity
+import com.example.readbook.databinding.FragmentProfileBinding
 import com.example.readbook.model.User
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -34,7 +37,7 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
-
+private var isFabOpen = false
 class ProfileFragment : Fragment() {
 
     lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
@@ -62,6 +65,8 @@ class ProfileFragment : Fragment() {
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
     }
 
     //프레그먼트를 포함하고 있는 액티비티에 붙었을 때
@@ -69,6 +74,23 @@ class ProfileFragment : Fragment() {
         super.onAttach(context)
 
     }
+
+    /*private fun toggleFab(){
+        Log.d("toggle", "toggleFab2")
+        if(isFabOpen){
+            ObjectAnimator.ofFloat(floatingActioncall, "translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(floatingsevicecenterbtn, "translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(floatingmain, View.ROTATION, 45f, 0f).apply { start() }
+            floatingmain.setImageResource(R.drawable.callp)
+
+            }else{
+                ObjectAnimator.ofFloat(floatingActioncall, "translationY", -200f).apply { start() }
+            ObjectAnimator.ofFloat(floatingsevicecenterbtn, "translationY", -400f).apply { start() }
+            ObjectAnimator.ofFloat(floatingmain, View.ROTATION, 0f, 45f).apply { start() }
+            floatingmain.setImageResource(R.drawable.callp)
+        }
+        isFabOpen = !isFabOpen
+    }*/
 
     private val getContent =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -102,6 +124,7 @@ class ProfileFragment : Fragment() {
     ): View?
     {
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        /*val binding = FragmentProfileBinding.inflate(inflater, container, false)*/
 
         //vie 선언을 안하고 return에 바로 적용시키면 glide가 작동을 안함
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
@@ -155,9 +178,16 @@ class ProfileFragment : Fragment() {
             }
         }
 
+
+
+
+
         floatingActionButton?.setOnClickListener{
-            val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:01012345678"))
+           val centeruser = auth.currentUser?.uid.toString()
+            Log.d("123123", "${centeruser}")
+            var intent = Intent(context,MessageActivity::class.java)
             startActivity(intent)
+
         }
 
         darkMode?.setOnCheckedChangeListener{ _, onSwitch ->

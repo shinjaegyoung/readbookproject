@@ -84,14 +84,16 @@ class MessageActivity : AppCompatActivity() {
                     //메세지 보내기
                     Handler().postDelayed({
                         println(chatRoomUid)
+
                         fireDatabase.child("chatrooms").child(chatRoomUid.toString()).child("comments").push().setValue(comment)
-                        messageActivity_editText.text = null
+                        messageActivity_editText.text=null
                     }, 1000L)
                     Log.d("chatUidNull dest", "$destinationUid")
                 }
             }else{
+
                 fireDatabase.child("chatrooms").child(chatRoomUid.toString()).child("comments").push().setValue(comment)
-                messageActivity_editText.text = null
+                messageActivity_editText.text=null
                 Log.d("chatUidNotNull dest", "$destinationUid")
             }
         }

@@ -39,7 +39,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 private var isFabOpen = false
 class ProfileFragment : Fragment() {
-
+   // private var testDD : ArrayList<User> = ArrayList()
     lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     lateinit var intentLauncher: ActivityResultLauncher<Intent>
 
@@ -188,10 +188,29 @@ class ProfileFragment : Fragment() {
 
 
         floatingActionButton?.setOnClickListener{
-           val centeruser = auth.currentUser?.uid.toString()
-            Log.d("123123", "${centeruser}")
-            var intent = Intent(context,MessageActivity::class.java)
-            startActivity(intent)
+            /*var center : ArrayList<User>
+            fireDatabase.child("users").child(uid).addListenerForSingleValueEvent(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(data in snapshot.children){
+                        center.add(data.getValue<User>().)
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })*/
+
+            var servicecenter = "XuBJ8JfS9bRd1JEBVa83rd5CLkT2"
+
+
+
+            val intent = Intent(context, MessageActivity::class.java)
+            intent.putExtra("destinationUid", servicecenter)
+            context?.startActivity(intent)
+            Log.d("useruid", "${user?.uid.toString()}")
+            Toast.makeText(requireContext(),"안녕하세요 readbook 고객센터 입니다 문의를 주시면 빠른시일내에 답변해드리겠습니다", Toast.LENGTH_SHORT).show()
 
         }
 

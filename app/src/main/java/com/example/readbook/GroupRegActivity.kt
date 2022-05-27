@@ -12,7 +12,10 @@ import android.widget.Toast
 import com.example.readbook.databinding.ActivityGroupRegBinding
 import com.example.readbook.model.GroupChatModel
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.text.SimpleDateFormat
@@ -61,7 +64,17 @@ class GroupRegActivity : AppCompatActivity() {
             } else {
                 FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).setValue(groupChatModel)
 
-                FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).child("comments").push().setValue(comment)
+                FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).addListenerForSingleValueEvent(object:
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        FirebaseDatabase.getInstance().getReference("groupChatrooms").child(gId.toString()).child("comments").push().setValue(comment)
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+
+                })
 
                 Toast.makeText(this, "모임이 등록되었습니다.", Toast.LENGTH_SHORT)
                     .show()

@@ -188,19 +188,7 @@ class ProfileFragment : Fragment() {
 
 
         floatingActionButton?.setOnClickListener{
-            /*var center : ArrayList<User>
-            fireDatabase.child("users").child(uid).addListenerForSingleValueEvent(object: ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for(data in snapshot.children){
-                        center.add(data.getValue<User>().)
-                    }
-                }
 
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })*/
 
             var servicecenter = "XuBJ8JfS9bRd1JEBVa83rd5CLkT2"
 

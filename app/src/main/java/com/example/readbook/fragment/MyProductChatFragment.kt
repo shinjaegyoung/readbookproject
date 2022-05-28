@@ -3,6 +3,7 @@ package com.example.readbook.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +16,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.readbook.MessageActivity
 import com.example.readbook.R
-import com.example.readbook.databinding.FragmentChatBinding
 import com.example.readbook.model.ChatModel
+import com.example.readbook.model.ChatModel.Comment
 import com.example.readbook.model.User
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -29,8 +30,6 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MyProductChatFragment : Fragment() {
-    private lateinit var binding: FragmentChatBinding
-    private var recyclerView: RecyclerView? = null
     private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     companion object {
@@ -129,7 +128,7 @@ class MyProductChatFragment : Fragment() {
                     }
                 })
             //메세지 내림차순 정렬 후 마지막 메세지의 키값을 가져옴(삭제)
-            val commentMap = TreeMap<String, ChatModel.Comment>(Collections.reverseOrder())
+            val commentMap = TreeMap<String, Comment>(Collections.reverseOrder())
             commentMap.putAll(chatModel[position].comments)
             val lastMessageKey = commentMap.keys.toTypedArray()[0]
             holder.textView_lastMessage.text = chatModel[position].comments[lastMessageKey]?.message

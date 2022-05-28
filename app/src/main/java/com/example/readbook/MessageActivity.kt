@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.readbook.model.ChatModel
-import com.example.readbook.model.ChatModel.Comment
 import com.example.readbook.model.User
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -67,7 +66,6 @@ class MessageActivity : AppCompatActivity() {
 
         destinationUid = intent.getStringExtra("destinationUid")
         uid = Firebase.auth.currentUser?.uid.toString()
-        recyclerView = findViewById(R.id.messageActivity_recyclerview)
 
         imageView.setOnClickListener {
             Log.d("클릭 시 dest", "$destinationUid")
@@ -75,7 +73,7 @@ class MessageActivity : AppCompatActivity() {
             chatModel.users.put(uid.toString(), true)
             chatModel.users.put(destinationUid!!, true)
 
-            val comment = Comment(uid, editText.text.toString(), curTime)
+            val comment = ChatModel.Comment(uid, editText.text.toString(), curTime)
             if(chatRoomUid == null){
                 imageView.isEnabled = false
                 fireDatabase.child("chatrooms").push().setValue(chatModel).addOnSuccessListener {
@@ -84,14 +82,12 @@ class MessageActivity : AppCompatActivity() {
                     //메세지 보내기
                     Handler().postDelayed({
                         println(chatRoomUid)
-
                         fireDatabase.child("chatrooms").child(chatRoomUid.toString()).child("comments").push().setValue(comment)
                         messageActivity_editText.text=null
                     }, 1000L)
                     Log.d("chatUidNull dest", "$destinationUid")
                 }
             }else{
-
                 fireDatabase.child("chatrooms").child(chatRoomUid.toString()).child("comments").push().setValue(comment)
                 messageActivity_editText.text=null
                 Log.d("chatUidNotNull dest", "$destinationUid")
@@ -114,6 +110,7 @@ class MessageActivity : AppCompatActivity() {
                         if(chatModel?.users!!.containsKey(destinationUid)){
                             chatRoomUid = item.key
                             messageActivity_ImageView.isEnabled = true
+                            recyclerView = findViewById(R.id.messageActivity_recyclerview)
                             recyclerView?.layoutManager = LinearLayoutManager(this@MessageActivity)
                             recyclerView?.adapter = RecyclerViewAdapter()
                         }
@@ -124,7 +121,7 @@ class MessageActivity : AppCompatActivity() {
 
     inner class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.MessageViewHolder>() {
 
-        private val comments = ArrayList<Comment>()
+        private val comments = ArrayList<ChatModel.Comment>()
         private var user : User? = null
         init{
             fireDatabase.child("users").child(destinationUid.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
@@ -145,7 +142,7 @@ class MessageActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     comments.clear()
                     for(data in snapshot.children){
-                        val item = data.getValue<Comment>()
+                        val item = data.getValue<ChatModel.Comment>()
                         comments.add(item!!)
                         println(comments)
                     }

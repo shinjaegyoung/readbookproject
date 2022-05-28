@@ -111,7 +111,7 @@ class GroupMessageActivity : AppCompatActivity() {
                     chatName.text=snapshot.getValue<GroupChatModel>()?.groupName.toString()
                     var maxNum=snapshot.getValue<GroupChatModel>()?.userLimit.toString()
                     var curNum=snapshot.getValue<GroupChatModel>()?.users?.size.toString()
-                    chatLimit.text="(${maxNum}/${curNum})"
+                    chatLimit.text="(${curNum}/${maxNum})"
                     getMessageList()
                 }
             })

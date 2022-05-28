@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical">
 
         <TextView
-            android:id="@+id/rc_booktitle"
+            android:id="@+id/rc_bookcontent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="content"
             android:textColor="?android:attr/textColorPrimary"
@@ -19,10 +20,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:layout_width="398dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:gravity="start"
             android:orientation="horizontal">
 
                 <TextView
@@ -34,11 +34,11 @@
                     android:text="-"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/rc_booktitle"
-                    app:layout_constraintTop_toBottomOf="@+id/rc_booktitle" />
+                    app:layout_constraintStart_toStartOf="@+id/rc_bookcontent"
+                    app:layout_constraintTop_toBottomOf="@+id/rc_bookcontent" />
 
                 <TextView
-                    android:id="@+id/rc_bookcontent"
+                    android:id="@+id/rc_booktitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -46,8 +46,8 @@
                     android:text="title"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/rc_bookdash"
-                    app:layout_constraintTop_toBottomOf="@+id/rc_booktitle" />
+                    app:layout_constraintStart_toEndOf="@+id/rc_bookcontent"
+                    app:layout_constraintTop_toBottomOf="@+id/rc_bookcontent" />
         </LinearLayout>
 
 </LinearLayout>

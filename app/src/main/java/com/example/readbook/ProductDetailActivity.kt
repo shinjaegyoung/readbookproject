@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -155,6 +157,10 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.tvProductDes.text=intent.getStringExtra("pDes")
         binding.usernamePD.text=intent.getStringExtra("user")
         binding.tvStatus.text=intent.getStringExtra("status")
+
+        if(product.user==auth.currentUser?.uid.toString()){
+            binding.btnDetailMarket.isVisible=false
+        }
 
         // 1:1 채팅 연결
         binding.btnDetailMarket.setOnClickListener {

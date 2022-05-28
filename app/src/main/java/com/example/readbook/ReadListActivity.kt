@@ -43,7 +43,7 @@ class ReadListActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         android.R.id.home -> {
-            val intent = Intent(this, ReadListActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
             true
@@ -75,12 +75,6 @@ class ReadListActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rv_booknote)
 
         val uid = Firebase.auth.currentUser?.uid.toString()
-
-//        buttonregister.setOnClickListener {
-//            val intent = Intent(this, Save_deleteActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
 
         val layoutManager = LinearLayoutManager(this@ReadListActivity)
         binding.rvBooknote.addItemDecoration(DividerItemDecoration(this, LinearLayoutManager.VERTICAL))

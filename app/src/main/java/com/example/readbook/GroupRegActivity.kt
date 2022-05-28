@@ -52,9 +52,7 @@ class GroupRegActivity : AppCompatActivity() {
             groupChatModel.chief= uid.toString()
             groupChatModel.groupId=gId.toString()
 
-
             comment=GroupChatModel.Comment(uid, "독서모임에 오신 것을 환영합니다!",curTime)
-
 
             if (binding.edGName.text.isEmpty() || binding.edGDes.text.isEmpty()) {
                 Toast.makeText(this, "모든 항목을 작성해주세요.", Toast.LENGTH_SHORT)
